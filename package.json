@@ -13,6 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "install": "node ./node_modules/protractor/bin/webdriver-manager update",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
