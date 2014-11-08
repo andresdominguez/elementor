@@ -1,4 +1,4 @@
-elementor
+![Protractor logo](extension/images/icon-38.png) elementor
 =========
 
 Test protractor selectors from your browser
