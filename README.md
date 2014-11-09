@@ -7,7 +7,7 @@ elementor will test it against a live protractor instance.
 
 ## Get elementor
 
-Elementor is a Node.js application. Install it through npm.
+Elementor is a Node.js application. Install it through npm:
 
 ```shell
 $ npm install elementor
@@ -17,8 +17,9 @@ $ npm install elementor
 
 Elementor needs [chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)
 and a running [selenium server](http://www.seleniumhq.org/download/). To
-download the dependencies and start the selenium server open your terminal and
-run the following commands:
+download the dependencies and start the selenium server you need to use
+protractor's webdriver manager. Open your terminal and run the following
+commands:
 
 ```shell
 $ ./node_modules/elementor/node_modules/.bin/webdriver-manager update
@@ -45,14 +46,18 @@ Elementor extends protractor's elementexplorer in two ways:
 The extension includes two components:
 
 * A popup to enter protractor locators and expressions.
-* A developer tools to suggest locators for the selected element.
+* A developer tools window to suggest locators for the selected element.
 
-##Using the popup
-You can use the popup to enter protractor selectors or execute commands that you would normally enter in the element explorer.
+## Using the popup
+Use the popup to enter protractor selectors or execute commands that you would
+normally enter in the element explorer.
 
-When you enter a locator starting with by. (e.g. by.css, by.model, by.binding, etc.) then it will be executed as a count expression element.all(<your locator>).count() by the element explorer.
+When you enter a locator starting with `by.` (e.g. `by.css`, `by.model`,
+`by.binding`, etc.) then it will be executed as a count expression
+element.all(<your locator>).count() by the element explorer.
 
-popup screenshot
+![elementor popup](extension/images/popup-screen.png)
+
 ##Using the developer tools
 The developer tools extension tries to find protractor locators for the currently selected item. To open the extension go to Developer tools > Elements and then on the side pane (Styles, Computed, etc.) choose protractor.
 
