@@ -1,9 +1,31 @@
 ![Protractor logo](extension/images/icon-38.png) elementor
 =========
 
-Test protractor selectors from your browser
+Test (Protractor)[http://protractortest.org] selectors from your browser.
+Elementor extends Protractor's elementexplorer
 
 ##Instructions
+
+```shell
+$ npm install elementor
+```
+
+Elementor needs chromedriver and a running selenium server. To download the
+dependencies and start the server run the following commands:
+
+```shell
+$ ./node_modules/elementor/node_modules/.bin/webdriver-manager update
+$ ./node_modules/elementor/node_modules/.bin/webdriver-manager start
+```
+
+Open a second terminal and start **elementor**
+
+```shell
+$ ./node_modules/.bin/elementor [url]
+```
+
+!(Elementor architecture)[/doc/elementor.png]
+
 The extension includes two components:
 
 * A popup to enter protractor locators and expressions.
