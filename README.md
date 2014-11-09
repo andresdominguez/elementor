@@ -93,4 +93,4 @@ You can use elementor from your IDE with Webstorm or IntelliJ. Follow the
 installation instructions
 [here](https://github.com/andresdominguez/elementor-idea).
 
-[idea plugin](doc/elementor-idea.png)
+![idea plugin](doc/elementor-idea.png)
