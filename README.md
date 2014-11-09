@@ -87,3 +87,10 @@ When ChromeDriver receives a command, if disconnected, it will attempt to close
 the DevTools window and reconnect.
 [source](https://sites.google.com/a/chromium.org/chromedriver/help/devtools-window-keeps-closing).
 
+## Using the Webstorm / IntelliJ plugin
+
+You can use elementor from your IDE with Webstorm or IntelliJ. Follow the
+installation instructions
+[here](https://github.com/andresdominguez/elementor-idea).
+
+[idea plugin](doc/elementor-idea.png)
