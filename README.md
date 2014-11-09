@@ -58,7 +58,7 @@ When you enter a locator starting with `by.<strategy>` (e.g. `by.css`, `by.model
 
 `by.css('div')` will be evaluated as `element(by.css('div')).count()`
 
-You can also enter commands. For example:
+You can also enter commands:
 
 * `browser.get('http://protractortest.org')`
 * `element(by.css('.some-class')).getText()`
@@ -66,11 +66,24 @@ You can also enter commands. For example:
 
 ![elementor popup](extension/images/popup-screen.png)
 
-##Using the developer tools
-The developer tools extension tries to find protractor locators for the currently selected item. To open the extension go to Developer tools > Elements and then on the side pane (Styles, Computed, etc.) choose protractor.
+## Using the developer tools
 
-open dev tools
-The DevTools extension is limited because you cannot use it in the same browser tab launched by the element explorer. To use the extension you need to open a new tab with the same page for which you want to find locator suggestions. Once the dev tools in the second tab is open then it will provide locator suggestions every time you change the selected element in the elements tab.
+The developer tools extension tries to find protractor locators for the
+currently selected item. Go to Developer tools > Elements and then on the side
+pane (Styles, Computed, etc.) choose protractor.
 
-When you open the DevTools window, ChromeDriver is automatically disconnected. When ChromeDriver receives a command, if disconnected, it will attempt to close the DevTools window and reconnect. (source).
+![open developer tools](extension/images/dev-tools.png)
+
+The DevTools extension is limited because you cannot use it in the same browser
+tab launched by the elementor. To use the extension you need to duplicate the
+first tab of the browser (right click on tab > duplicate). Once the dev tools in
+the second tab is open then it will provide locator suggestions every time you
+change the selected element in the elements tab.
+
+![dev tools](extension/images/dev-tools2.png)
+
+When you open the DevTools window, ChromeDriver is automatically disconnected.
+When ChromeDriver receives a command, if disconnected, it will attempt to close
+the DevTools window and reconnect.
+[source](https://sites.google.com/a/chromium.org/chromedriver/help/devtools-window-keeps-closing).
 
