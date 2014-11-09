@@ -2,24 +2,30 @@
 =========
 
 Elementor lets you test [Protractor](http://protractortest.org) selectors from
-your browser and your IDE. You can enter a protractor locator or expression
-and elementor will test it against a live protractor instance.
+your browser and IDE. You can enter a protractor locator or expression and
+elementor will test it against a live protractor instance.
 
 ## Get elementor
+
+Elementor is a Node.js application. Install it through npm.
 
 ```shell
 $ npm install elementor
 ```
 
-Elementor needs chromedriver and a running selenium server. To download the
-dependencies and start the server run the following commands:
+## How to launch
+
+Elementor needs [chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)
+and a running [selenium server](http://www.seleniumhq.org/download/). To
+download the dependencies and start the selenium server open your terminal and
+run the following commands:
 
 ```shell
 $ ./node_modules/elementor/node_modules/.bin/webdriver-manager update
 $ ./node_modules/elementor/node_modules/.bin/webdriver-manager start
 ```
 
-Open a second terminal and start **elementor**
+In another terminal run the following command with an optional url:
 
 ```shell
 $ ./node_modules/.bin/elementor [url]
