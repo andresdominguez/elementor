@@ -149,7 +149,12 @@ var flowEval = function(code, context, file, callback) {
       process.domain.emit('error', vmErr);
       process.domain.exit();
     }
-    return result.then(function(val) {return val});
+
+    if (webdriver.promise.isPromise(result)) {
+      return result.then(function(val) {return val});
+    } else {
+      return result;
+    }
   }).then(function(res) {
     if (!vmErr) {
       callback(null, res);
@@ -187,7 +192,7 @@ var startUp = function() {
   var extensionPath = path.resolve(__dirname, '../extension');
 
   driver = new webdriver.Builder().
-    usingServer('http://localhost:4444/wd/hub').
+      usingServer('http://localhost:4444/wd/hub').
       withCapabilities({
         'browserName': 'chrome',
         'chromeOptions': {
