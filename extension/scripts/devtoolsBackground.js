@@ -121,12 +121,3 @@ panels.elements.createSidebarPane('Protractor', function(sidebar) {
     );
   });
 });
-
-// Create a pane with the instructions.
-chrome.devtools.panels.create('Protractor',
-    'images/icon-16.png',
-    'info-pane.html',
-    function() {
-    }
-);
-
