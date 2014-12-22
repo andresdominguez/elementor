@@ -94,3 +94,10 @@ installation instructions
 [here](https://github.com/andresdominguez/elementor-idea).
 
 ![idea plugin](doc/elementor-idea.png)
+
+## Using the Sublime plugin
+
+There is also a sublime plugin. Follow the installation installation
+[here](https://github.com/andresdominguez/elementor-sublime).
+
+![sublime plugin](https://raw.githubusercontent.com/andresdominguez/elementor-sublime/master/screenshot.png)
