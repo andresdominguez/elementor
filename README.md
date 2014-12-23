@@ -6,7 +6,7 @@ your browser and IDE. You can enter a protractor locator or expression and
 elementor will test it against a live protractor instance.
 
 
-## Video
+## Video tutorial
 
 [![Elementor video](http://img.youtube.com/vi/kC0JYp79tdo/0.jpg)](http://www.youtube.com/watch?v=kC0JYp79tdo)
 
