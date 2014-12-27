@@ -15,7 +15,7 @@ elementor will test it against a live protractor instance.
 Elementor is a Node.js application. Install it through npm:
 
 ```shell
-$ npm install elementor
+$ npm install elementor -g
 ```
 
 ## How to launch
@@ -27,14 +27,20 @@ protractor's webdriver manager. Open your terminal and run the following
 commands:
 
 ```shell
-$ ./node_modules/elementor/node_modules/.bin/webdriver-manager update
-$ ./node_modules/elementor/node_modules/.bin/webdriver-manager start
+# Get protractor
+$ npm install protractor -g
+
+# Download chromedriver and the selenium server
+$ webdriver-manager update
+
+# Start the server
+$ webdriver-manager start
 ```
 
 In another terminal run elementor with an optional url:
 
 ```shell
-$ ./node_modules/.bin/elementor https://angularjs.org/
+$ elementor https://angularjs.org
 ```
 
 ## How it works
