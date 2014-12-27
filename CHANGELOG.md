@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.0.9
+
+* Bump version to update documentation
+
 ## Version 0.0.8
 
 * Remove devtools info pane
