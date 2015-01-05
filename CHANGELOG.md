@@ -3,6 +3,7 @@
 ## Version 0.0.10
 
 * Upgrade to angular 1.3.8
+* Use ctrl as syntax in popup
 
 ## Version 0.0.9
 
