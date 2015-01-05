@@ -1,7 +1,7 @@
-var ptorApp = angular.module('elementorApp', ['ngResource']);
+var elementorApp = angular.module('elementorApp', ['ngResource']);
 
 // HTTP resource to call the element explorer's server.
-ptorApp.factory('locatorTester', function($resource) {
+elementorApp.factory('locatorTester', function($resource) {
   var testSelector = $resource('http://localhost:13000/testSelector');
 
   return {
@@ -12,7 +12,7 @@ ptorApp.factory('locatorTester', function($resource) {
 });
 
 // A service to persist the locator history when you close the popup.
-ptorApp.factory('history', function() {
+elementorApp.factory('history', function() {
   var bgPage = chrome.extension.getBackgroundPage();
 
   return {
@@ -25,7 +25,7 @@ ptorApp.factory('history', function() {
   };
 });
 
-ptorApp.controller('LocatorCtrl', function($scope, history, locatorTester) {
+elementorApp.controller('LocatorCtrl', function($scope, history, locatorTester) {
   var app = $scope,
       maxElements = 50;
 
