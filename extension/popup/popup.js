@@ -1,4 +1,4 @@
-var ptorApp = angular.module('ptorApp', ['ngResource']);
+var ptorApp = angular.module('elementorApp', ['ngResource']);
 
 // HTTP resource to call the element explorer's server.
 ptorApp.factory('locatorTester', function($resource) {
