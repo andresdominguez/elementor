@@ -19,18 +19,18 @@ elementorApp.factory('history', function() {
     save: function(history) {
       bgPage.saveHistory(angular.copy(history));
     },
-    restore: function($scope) {
-      $scope.history = bgPage.getLocatorHistory();
+    restore: function(app) {
+      app.history = bgPage.getLocatorHistory();
     }
   };
 });
 
 elementorApp.controller('LocatorCtrl', function($scope, history, locatorTester) {
-  var app = $scope,
+  var app = this,
       maxElements = 50;
 
   // Restore the history, if there is any.
-  history.restore($scope);
+  history.restore(app);
 
   // Copy a history into the input field.
   app.copyToInput = function(row) {

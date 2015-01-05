@@ -34,17 +34,17 @@
   <script src="../js/angular-resource.min.js"></script>
   <script src="popup.js"></script>
 </head>
-<body ng-controller="LocatorCtrl">
-<form ng-submit="testLocator()">
+<body ng-controller="LocatorCtrl as ctrl">
+<form ng-submit="ctrl.testLocator()">
   <label for="locator">Enter locator or command | </label>
   <a title="Load current url in the element explorer window"
-      ng-click="syncUrl()"><strong>Sync url</strong></a>
+      ng-click="ctrl.syncUrl()"><strong>Sync url</strong></a>
   <div class="input-group">
     <input
         id="locator"
         type="text"
         placeholder="e.g. by.css('.foo') or $('.foo').getText()"
-        ng-model="locator"
+        ng-model="ctrl.locator"
         class="form-control">
       <span class="input-group-btn">
         <button type="submit" class="btn btn-danger">Submit</button>
@@ -52,10 +52,10 @@
   </div>
 </form>
 <div id="history-list" class="panel panel-default"
-    ng-if="history.length">
+    ng-if="ctrl.history.length">
 
   <div class="panel-heading">
-    Results history | <a ng-click="clearHistory()" title="Clear history">Clear</a>
+    Results history | <a ng-click="ctrl.clearHistory()" title="Clear history">Clear</a>
   </div>
 
   <table class="table">
@@ -66,12 +66,12 @@
       </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="row in history">
+    <tr ng-repeat="row in ctrl.history">
       <td>
-        <a ng-click="remove($index)"
+        <a ng-click="ctrl.remove($index)"
             title="Remove from history"
             class="remove">&#x2715;</a><a ng-bind="row.locator"
-            ng-click="copyToInput(row)"
+            ng-click="ctrl.copyToInput(row)"
             title="copy to input field"></a>
       </td>
       <td ng-bind="row.count"></td>
