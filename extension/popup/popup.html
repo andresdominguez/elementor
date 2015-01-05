@@ -70,11 +70,11 @@
       <td>
         <a ng-click="ctrl.remove($index)"
             title="Remove from history"
-            class="remove">&#x2715;</a><a ng-bind="row.locator"
+            class="remove">&#x2715;</a><a ng-bind="row.expression"
             ng-click="ctrl.copyToInput(row)"
             title="copy to input field"></a>
       </td>
-      <td ng-bind="row.count"></td>
+      <td ng-bind="row.result"></td>
     </tr>
     </tbody>
   </table>

@@ -34,7 +34,7 @@ elementorApp.controller('LocatorCtrl', function($scope, history, locatorTester) 
 
   // Copy a history into the input field.
   app.copyToInput = function(row) {
-    app.locator = row.locator;
+    app.locator = row.expression;
   };
 
   // Get the url of the current tab and send it to the element explorer.
@@ -60,10 +60,10 @@ elementorApp.controller('LocatorCtrl', function($scope, history, locatorTester) 
   app.testLocator = function() {
     locatorTester.get(app.locator).then(function(data) {
       // Add results to history.
-      angular.forEach(data.results, function(count, locator) {
+      angular.forEach(data.results, function(result, expression) {
         app.history.unshift({
-          locator: locator,
-          count: count
+          expression: expression,
+          result: result
         });
       });
 
