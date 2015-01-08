@@ -1,19 +1,25 @@
-# Changelog
+# 0.1.0
 
-## Version 0.0.10
+## Bug fixes
 
-* Upgrade to angular 1.3.8
-* Use ctrl as syntax in popup
+ - fix(elementexplorer): Make elementor work with v11
+   Remove null as a second argument in runInThisContext
+   Closes #1
 
-## Version 0.0.9
+# 0.0.10
 
-* Bump version to update documentation
+ - Upgrade to angular 1.3.8
+ - Use ctrl as syntax in popup
 
-## Version 0.0.8
+# 0.0.9
 
-* Remove devtools info pane
+ - Bump version to update documentation
 
-## Version 0.0.7
+# 0.0.8
 
-* Upgrade to protractor 1.5.0
-* Use dependencies from protractor node modules, remove local protractor copy
+ - Remove devtools info pane
+
+# 0.0.7
+
+ - Upgrade to protractor 1.5.0
+ - Use dependencies from protractor node modules, remove local protractor copy
