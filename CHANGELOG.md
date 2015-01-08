@@ -3,7 +3,9 @@
 ## Bug fixes
 
  - fix(elementexplorer): Make elementor work with v11
+
    Remove null as a second argument in runInThisContext
+
    Closes #1
 
 # 0.0.10
