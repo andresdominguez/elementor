@@ -1,3 +1,7 @@
+# 0.1.1
+
+ - Upgrade to protractor 1.6.0
+
 # 0.1.0
 
 ## Bug fixes
