@@ -75,7 +75,7 @@ var startServer = function() {
 
   var testSelector = function(flow, selector) {
     return flow.execute(function() {
-      return vm.runInThisContext(selector, null);
+      return vm.runInThisContext(selector);
     }).then(function(res) {
       return res;
     }, function(err) {
