@@ -43,6 +43,11 @@ In another terminal run elementor with an optional url:
 $ elementor https://angularjs.org
 ```
 
+## For applications not using Angular, just add the --nonAngular flag:
+```shell
+$ elementor https://www.facebook.com --nonAngular
+```
+
 ## How it works
 
 Elementor extends protractor's elementexplorer in two ways:

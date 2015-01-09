@@ -205,6 +205,12 @@ var startUp = function() {
 
     browser = protractor.wrapDriver(driver);
 
+    //Turn off angular synchronization if this is not an Angular application
+    if (process.argv.indexOf('--nonAngular') !== -1) {
+      console.log('This is not an angular application');
+      browser.ignoreSynchronization = true;
+    }
+
     // Set up globals to be available from the command line.
     global.driver = driver;
     global.protractor = protractor;
