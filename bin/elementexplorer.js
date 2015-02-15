@@ -190,13 +190,17 @@ var startRepl = function() {
 var startUp = function() {
   // Resolve the path for the chrome extension.
   var extensionPath = path.resolve(__dirname, '../extension');
-
+  var arrChromeOptions = ['--load-extension=' + extensionPath];
+  arrChromeOptions = arrChromeOptions.concat(process.argv.filter(function(arg) {
+    return arg.indexOf('--') === 0;
+  }));
+  
   driver = new webdriver.Builder().
       usingServer('http://localhost:4444/wd/hub').
       withCapabilities({
         'browserName': 'chrome',
         'chromeOptions': {
-          'args': ['--load-extension=' + extensionPath]
+          'args': arrChromeOptions
         }
       }).build();
 
