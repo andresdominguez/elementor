@@ -43,6 +43,18 @@ In another terminal run elementor with an optional url:
 $ elementor https://angularjs.org
 ```
 
+If you need to pass flags to chrome use the `--chrome` flag:
+
+```shell
+$ elementor https://angularjs.org --chrome="--remote-debugging-port=9222 --disable-web-security"
+```
+
+For applications not using Angular, just add the `--nonAngular` flag:
+
+```shell
+$ elementor https://google.com --nonAngular
+```
+
 ## How it works
 
 Elementor extends protractor's elementexplorer in two ways:

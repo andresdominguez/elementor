@@ -1,0 +1,9 @@
+Usage:
+    $0 [url] [options]
+
+Options:
+  --chrome        Pass chrome options to chromedriver:
+                  (e.g. --chrome="--remote-debugging-port=9222 --disable-web-security")
+  --nonAngular    Launch protractor with "browser.ignoreSynchronization = true"
+  -h, --help      Print usage information
+  -v, --version   Show version

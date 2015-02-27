@@ -1,3 +1,8 @@
+# 0.1.2
+
+ - Add the ability to pass flags to chromedriver
+ - Add a flag to ignore Angular synchronization
+
 # 0.1.1
 
  - Upgrade to protractor 1.6.0

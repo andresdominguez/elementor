@@ -43,17 +43,13 @@ var path = require('path');
 var http = require('http');
 var url = require('url');
 
-var driver, browser;
+var minimist = require('minimist');
+var args = minimist(process.argv.slice(2), {
+  string: 'chrome',
+  alias: { h: 'help', v: 'version' }
+});
 
-var INITIAL_SUGGESTIONS = [
-  'element(by.id(\'\'))',
-  'element(by.css(\'\'))',
-  'element(by.name(\'\'))',
-  'element(by.binding(\'\'))',
-  'element(by.xpath(\'\'))',
-  'element(by.tagName(\'\'))',
-  'element(by.className(\'\'))'
-];
+var driver, browser;
 
 var list = function(locator) {
   return browser.findElements(locator).then(function(arr) {
@@ -166,6 +162,16 @@ var flowEval = function(code, context, file, callback) {
 };
 
 var startRepl = function() {
+  var INITIAL_SUGGESTIONS = [
+    'element(by.id(\'\'))',
+    'element(by.css(\'\'))',
+    'element(by.name(\'\'))',
+    'element(by.binding(\'\'))',
+    'element(by.xpath(\'\'))',
+    'element(by.tagName(\'\'))',
+    'element(by.className(\'\'))'
+  ];
+
   var flowRepl = repl.start({
     'useGlobal': true,
     'eval': flowEval
@@ -191,12 +197,19 @@ var startUp = function() {
   // Resolve the path for the chrome extension.
   var extensionPath = path.resolve(__dirname, '../extension');
 
+  // Are there any chrome options?
+  var chromeArgs = ['--load-extension=' + extensionPath];
+  if(args.chrome) {
+    chromeArgs = chromeArgs.concat(args.chrome.split(' '));
+    console.log('chromeArgs', chromeArgs);
+  }
+
   driver = new webdriver.Builder().
       usingServer('http://localhost:4444/wd/hub').
       withCapabilities({
         'browserName': 'chrome',
         'chromeOptions': {
-          'args': ['--load-extension=' + extensionPath]
+          'args': chromeArgs
         }
       }).build();
 
@@ -204,6 +217,11 @@ var startUp = function() {
     driver.manage().timeouts().setScriptTimeout(11000);
 
     browser = protractor.wrapDriver(driver);
+
+    if (args.nonAngular) {
+      console.log('This is not an angular application');
+      browser.ignoreSynchronization = true;
+    }
 
     // Set up globals to be available from the command line.
     global.driver = driver;
@@ -215,19 +233,19 @@ var startUp = function() {
     global.by = global.By = protractor.By;
     global.list = list;
 
-
-    util.puts('Type <tab> to see a list of locator strategies.');
-    util.puts('Use the `list` helper function to find elements by strategy:');
-    util.puts('  e.g., list(by.binding(\'\')) gets all bindings.');
-    util.puts('');
-    util.puts('IMPORTANT:');
-    util.puts('The element explorer will not work when the dev tools window ' +
+    console.log('Type <tab> to see a list of locator strategies.');
+    console.log('Use the `list` helper function to find elements by strategy:');
+    console.log('  e.g., list(by.binding(\'\')) gets all bindings.');
+    console.log('');
+    console.log('IMPORTANT:');
+    console.log('The element explorer will not work when the dev tools window ' +
         'is open on the first tab of the launched chrome browser. To use the ' +
         'dev tools duplicate the first tab and inspect on the second tab.');
-    util.puts('');
+    console.log('');
 
-    var url = process.argv[2] || 'about:blank';
-    util.puts('Getting page at: ' + url);
+    // Did the user provide a URL?
+    var url = args._[0] || 'about:blank';
+    console.log('Getting page at: ' + url);
     driver.get(url);
 
     startServer();
@@ -235,5 +253,20 @@ var startUp = function() {
     startRepl();
   });
 };
+
+if (args.help) {
+  var cmd = require('path').basename(process.argv[1]);
+  console.log(
+      require('fs')
+          .readFileSync(path.join(__dirname, '../help.txt'), 'utf-8')
+          .replace(/\$0/g, cmd)
+          .trim());
+  process.exit();
+}
+
+if (args.version) {
+  console.log(require('../package.json').version);
+  process.exit();
+}
 
 startUp();
