@@ -57,14 +57,14 @@ describe('HTTP', function() {
 
   it('should get element text', function(done) {
     // When you get an element's text.
-    callElementor('element.all(by.css(\'.navbar li\')).first().getText()')
-        .then(function(response) {
-          expect(response).toEqual({
-            results: {
-              'element.all(by.css(\'.navbar li\')).first().getText()': 'Home'
-            }
-          });
-          done();
-        });
+    var command = 'element.all(by.css(\'.navbar li\')).first().getText()';
+    callElementor(command).then(function(response) {
+      expect(response).toEqual({
+        results: {
+          'element.all(by.css(\'.navbar li\')).first().getText()': 'Home'
+        }
+      });
+      done();
+    });
   });
 });
