@@ -57,11 +57,12 @@ describe('HTTP', function() {
 
   it('should get element text', function(done) {
     // When you get an element's text.
-    var command = 'element.all(by.css(\'.navbar li\')).first().getText()';
+    var command = '$$(\'.navbar li\').first().getText()';
     callElementor(command).then(function(response) {
+      // Then ensure there is text.
       expect(response).toEqual({
         results: {
-          'element.all(by.css(\'.navbar li\')).first().getText()': 'Home'
+          '$$(\'.navbar li\').first().getText()': 'Home'
         }
       });
       done();
