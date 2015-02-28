@@ -28,7 +28,7 @@ describe('HTTP', function() {
     var url = 'browser.get(\'http://angular.github.io/protractor/#/api\')';
 
     // Given that you navigate to the protractor website.
-    callElementor(url).then(function(response) {
+    callElementor(url).then(function() {
       // When you get the current URL.
       return callElementor('browser.getCurrentUrl()');
     }).then(function(response) {
@@ -41,5 +41,4 @@ describe('HTTP', function() {
       done();
     });
   });
-})
-;
+}) ;
