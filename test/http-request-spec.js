@@ -27,14 +27,12 @@ describe('HTTP', function() {
   it('should navigate to protractor website', function(done) {
     var url = 'browser.get(\'http://angular.github.io/protractor/#/api\')';
 
+    // Given that you navigate to the protractor website.
     callElementor(url).then(function(response) {
-      expect(response).toEqual({
-        results: {
-          'browser.get(\'http://angular.github.io/protractor/#/api\')': null
-        }
-      });
+      // When you get the current URL.
       return callElementor('browser.getCurrentUrl()');
     }).then(function(response) {
+      // Then ensure the URL has changed.
       expect(response).toEqual({
         results: {
           'browser.getCurrentUrl()': 'http://angular.github.io/protractor/#/api'
