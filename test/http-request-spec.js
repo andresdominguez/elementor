@@ -5,8 +5,8 @@ var request = require('request');
 describe('HTTP', function() {
 
   var encode = function(command) {
-    var host = 'http://localhost:13000/testSelector';
-    return host + '?popupInput=' + encodeURIComponent(command);
+    return 'http://localhost:13000/testSelector?popupInput=' +
+        encodeURIComponent(command);
   };
 
   var callElementor = function(command) {
@@ -53,5 +53,18 @@ describe('HTTP', function() {
       });
       done();
     });
+  });
+
+  it('should get element text', function(done) {
+    // When you get an element's text.
+    callElementor('element.all(by.css(\'.navbar li\')).first().getText()')
+        .then(function(response) {
+          expect(response).toEqual({
+            results: {
+              'element.all(by.css(\'.navbar li\')).first().getText()': 'Home'
+            }
+          });
+          done();
+        });
   });
 });
