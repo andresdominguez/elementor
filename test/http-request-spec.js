@@ -41,4 +41,17 @@ describe('HTTP', function() {
       done();
     });
   });
-}) ;
+
+  it('should transform by input into count expression', function(done) {
+    // When you select by css.
+    callElementor('by.css(\'#title\')').then(function(response) {
+      // Then ensure the input is turned into count expression.
+      expect(response).toEqual({
+        results: {
+          'element.all(by.css(\'#title\')).count()': 1
+        }
+      });
+      done();
+    });
+  });
+});
