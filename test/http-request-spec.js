@@ -3,40 +3,41 @@ var q = require('q');
 var request = require('request');
 
 describe('HTTP', function() {
+
+  var callElementor = function(url) {
+    var deferred = q.defer();
+
+    request(url, function(error, response, body) {
+      if (error) {
+        console.log("Got error: " + error);
+        return deferred.reject(error);
+      }
+      deferred.resolve(JSON.parse(body));
+    });
+
+    return deferred.promise;
+  };
+
   describe('Popup', function() {
-    var encode = function(command) {
-      return 'http://localhost:13000/testSelector?popupInput=' +
+    var callPopup = function(command) {
+      var encodedUrl = 'http://localhost:13000/testSelector?popupInput=' +
           encodeURIComponent(command);
-    };
 
-    var callElementor = function(command) {
-      var deferred = q.defer();
-
-      var url = encode(command);
-      request(url, function(error, response, body) {
-        if (error) {
-          console.log("Got error: " + error);
-          return deferred.reject(error);
-        }
-        deferred.resolve(JSON.parse(body));
-      });
-
-      return deferred.promise;
+      return callElementor(encodedUrl);
     };
 
     it('should navigate to protractor website', function(done) {
       var url = 'browser.get(\'http://angular.github.io/protractor/#/api\')';
 
       // Given that you navigate to the protractor website.
-      callElementor(url).then(function() {
+      callPopup(url).then(function() {
         // When you get the current URL.
-        return callElementor('browser.getCurrentUrl()');
+        return callPopup('browser.getCurrentUrl()');
       }).then(function(response) {
         // Then ensure the URL has changed.
         expect(response).toEqual({
           results: {
-            'browser.getCurrentUrl()':
-                'http://angular.github.io/protractor/#/api'
+            'browser.getCurrentUrl()': 'http://angular.github.io/protractor/#/api'
           }
         });
         done();
@@ -45,7 +46,7 @@ describe('HTTP', function() {
 
     it('should transform by input into count expression', function(done) {
       // When you select by css.
-      callElementor('by.css(\'#title\')').then(function(response) {
+      callPopup('by.css(\'#title\')').then(function(response) {
         // Then ensure the input is turned into count expression.
         expect(response).toEqual({
           results: {
@@ -59,7 +60,7 @@ describe('HTTP', function() {
     it('should get element text', function(done) {
       // When you get an element's text.
       var command = '$$(\'.navbar li\').first().getText()';
-      callElementor(command).then(function(response) {
+      callPopup(command).then(function(response) {
         // Then ensure there is text.
         expect(response).toEqual({
           results: {
@@ -68,6 +69,38 @@ describe('HTTP', function() {
         });
         done();
       });
+    });
+  });
+
+  describe('Devtools', function() {
+    var encode = function(command) {
+      return 'http://localhost:13000/testSelector?locators=' +
+          encodeURIComponent(command);
+    };
+
+    var findSuggestions = function(command) {
+      var encodedUrl = 'http://localhost:13000/testSelector?locators=' +
+          encodeURIComponent(command);
+
+      return callElementor(encodedUrl);
+    };
+
+    it('should find suggestions', function(done) {
+      var command = JSON.stringify({
+        byCss: {
+          nodeName: 'label',
+          'for': 'searchInput'
+        }
+      });
+
+      findSuggestions(command).then(function(response) {
+        expect(response).toEqual({
+          results: {
+            'by.css(\'label[for="searchInput"]\')': 1
+          }
+        });
+        done();
+      })
     });
   });
 });
