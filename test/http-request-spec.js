@@ -1,3 +1,5 @@
+'use strict';
+
 var http = require('http');
 var q = require('q');
 var request = require('request');
@@ -73,10 +75,6 @@ describe('HTTP', function() {
   });
 
   describe('Devtools', function() {
-    var encode = function(command) {
-      return 'http://localhost:13000/testSelector?locators=' +
-          encodeURIComponent(command);
-    };
 
     var findSuggestions = function(command) {
       var encodedUrl = 'http://localhost:13000/testSelector?locators=' +
@@ -100,7 +98,7 @@ describe('HTTP', function() {
           }
         });
         done();
-      })
+      });
     });
   });
 });
