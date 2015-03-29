@@ -12,14 +12,17 @@ var runCommand = function(command) {
   var child = childProcess.spawn(commandArray[0], commandArray.slice(1));
 
   child.stdout.on('data', function(data) {
-    console.log('Data', data.toString());
-    deferred.resolve();
+    var line = data.toString();
+    process.stdout.write(line);
+
+    // Wait until the port is ready to resolve the promise.
+    if (line.match(/Server listening on/g)) {
+      deferred.resolve();
+    }
   });
 
-  child.stderr.on('data', function(data) {
-    console.log('Error', data.toString());
-    deferred.reject(data.toString());
-  });
+  // The process uses stderr for debugging info. Ignore errors.
+  child.stderr.on('data', process.stderr.write);
 
   return deferred.promise;
 };
