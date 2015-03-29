@@ -4,10 +4,10 @@ var q = require('q');
 var runCommand = function(cmd) {
   var deferred = q.defer();
 
-  // Terminate with ENTER.
-  cmd= "browser.get('http://angular.github.io/protractor/#/');\r\n";
+  //cmd= "browser.get('http://angular.github.io/protractor/#/');\r\n";
 
-  //cmd += '\r\n';
+  // Terminate with ENTER.
+  cmd += '\r\n';
 
   var client = net.connect({port: 6969}, function() {
     console.log('Connected. Sending command:', cmd);
