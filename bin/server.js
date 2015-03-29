@@ -1,8 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var ElementExplorerClient = require('./elementExplorerClient');
+var cliHelper = require('./cliHelper');
 
-var startServer = function() {
+var startExpress = function() {
   var exClient;
 
   var app = express();
@@ -27,16 +28,7 @@ var startServer = function() {
     });
   }
 
-  function handleDevToolsRequest(input, res) {
-    console.log('Dev tools input', input);
-
-    res.send('dev tool');
-  }
-
-// Open a server.
   var server = app.listen(13000, function() {
-
-
     console.log('Starting client');
     exClient = new ElementExplorerClient();
 
@@ -45,6 +37,29 @@ var startServer = function() {
   });
 };
 
+var startProtractor = function() {
+  console.log('Starting protractor');
+
+  var protractorPromise = cliHelper.startProtractor();
+
+  protractorPromise.then(function() {
+    console.log('Protractor started');
+    console.log('Starting elementor server');
+  });
+
+  protractorPromise.catch(function(error) {
+    console.log('Error starting protractor', e);
+  });
+
+  return protractorPromise;
+};
+
+var startServer = function() {
+  startProtractor().then(function() {
+    startExpress();
+  });
+};
+
 module.exports = {
-  startServer: startServer
+  start: startServer
 };
