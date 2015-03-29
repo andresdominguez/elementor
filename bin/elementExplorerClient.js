@@ -1,50 +1,30 @@
 var net = require('net');
-var EventEmitter = require('events').EventEmitter;
 var q = require('q');
 
-/**
- *
- * @constructor
- */
-var ElementExplorerClient = function() {
-  this.client_ = null;
-  this.eventEmitter_ = new EventEmitter();
+var runCommand = function(cmd) {
+  var deferred = q.defer();
 
-  this.connect_();
-};
+  // Terminate with ENTER.
+  cmd= "browser.get('http://angular.github.io/protractor/#/');\r\n";
 
-ElementExplorerClient.prototype.connect_ = function() {
-  var eventEmitter = this.eventEmitter_;
+  //cmd += '\r\n';
 
-  var client = net.connect({port: 6969}, function() { //'connect' listener
-    console.log('Connected to protractor');
+  var client = net.connect({port: 6969}, function() {
+    console.log('Connected. Sending command:', cmd);
+    client.write(cmd);
   });
 
   client.on('data', function(data) {
-    console.log('Got data from net', data.toString());
-    eventEmitter.emit('ptorResponse', data.toString());
+    //client.end();
+    deferred.resolve(data.toString());
   });
-  client.on('end', function() {
-    console.log('disconnected from server');
-  });
-
-  this.client_ = client;
-};
-
-ElementExplorerClient.prototype.runCommand = function(cmd) {
-  var deferred = q.defer();
-
-  this.eventEmitter_.once('ptorResponse', function(response) {
-    console.log('Got response from event');
-    deferred.resolve(response);
-  });
-
-  this.client_.write(cmd);
 
   return deferred.promise;
 };
 
-ElementExplorerClient.prototype.getSuggestions = function() {
+var getSuggestions = function() {
 };
 
-module.exports = ElementExplorerClient;
+module.exports = {
+  runCommand: runCommand
+};
