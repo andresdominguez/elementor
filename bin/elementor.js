@@ -1,3 +1,3 @@
-var elementorServer = require('./server');
+var elementorServer = require('../lib/server');
 
 elementorServer.start();
