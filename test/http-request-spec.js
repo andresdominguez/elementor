@@ -52,7 +52,7 @@ describe('HTTP', function() {
         // Then ensure the input is turned into count expression.
         expect(response).toEqual({
           results: {
-            'element.all(by.css(\'#title\')).count()': 1
+            'element.all(by.css(\'#title\')).count()': '1'
           }
         });
         done();
@@ -94,7 +94,7 @@ describe('HTTP', function() {
       findSuggestions(command).then(function(response) {
         expect(response).toEqual({
           results: {
-            'by.css(\'label[for="searchInput"]\')': 1
+            'by.css(\'label[for="searchInput"]\')': '1'
           }
         });
         done();
@@ -118,14 +118,14 @@ describe('HTTP', function() {
       findSuggestions(command).then(function(response) {
         expect(response).toEqual({
           results: {
-            "by.css('#searchInput')": 1,
-            "by.css('input.form-control')": 1,
-            "by.css('.form-control')": 1,
-            "by.css('input[type=\"search\"]')": 1,
-            "by.css('input[placeholder=\"Enter name\"]')": 1,
-            "by.css('input[ng-model=\"searchTerm\"]')": 1,
-            "by.id('searchInput')": 1,
-            "by.model('searchTerm')": 1
+            "by.css('#searchInput')": "1",
+            "by.css('input.form-control')": "1",
+            "by.css('.form-control')": "1",
+            "by.css('input[type=\"search\"]')": "1",
+            "by.css('input[placeholder=\"Enter name\"]')": "1",
+            "by.css('input[ng-model=\"searchTerm\"]')": "1",
+            "by.id('searchInput')": "1",
+            "by.model('searchTerm')": "1"
           }
         });
         done();
