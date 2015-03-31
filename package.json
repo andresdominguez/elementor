@@ -2,16 +2,15 @@
   "name": "elementor",
   "version": "1.0.0",
   "description": "Elementor allows you test locators against a live Protractor session by entering them directly into Chrome or your IDE.",
-  "main": "bin/elementexplorer.js",
+  "main": "bin/elementor.js",
   "bin": {
-    "elementor": "bin/elementexplorer.js"
+    "elementor": "bin/elementor.js"
   },
   "dependencies": {
     "body-parser": "^1.12.2",
     "express": "^4.12.3",
     "lodash": "^2.4.1",
-    "minimist": "^1.1.0",
-    "protractor": "^1.6.0"
+    "minimist": "^1.1.0"
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5",
