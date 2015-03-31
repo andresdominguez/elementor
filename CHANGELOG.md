@@ -1,3 +1,7 @@
+# 1.0.4
+
+ - Use my own version of protractor (protractor-elementor)
+
 # 1.0.0
 
  - Major refactoring to support protractor 2.0.0. This release may contain a few
