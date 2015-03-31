@@ -42,7 +42,6 @@ var getOptions = function() {
 };
 
 
-
 // Start elementor.
 var options = getOptions();
 require('../lib/server').start(options);
