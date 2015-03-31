@@ -1,10 +1,13 @@
 var configHelper = require('../lib/config-helper');
 var fs = require('fs');
+var path = require('path');
 
 describe('config-helper', function() {
+
   describe('onPrepare', function() {
+
     var ensureOnPrepareMatches = function(filePath, expected) {
-      // Read the file
+      // Read the file.
       var templateFile = fs.readFileSync(filePath, 'utf-8'),
           startIndex = templateFile.indexOf('onPrepare: function'),
           endIndex = templateFile.indexOf('}', startIndex),
@@ -34,7 +37,32 @@ describe('config-helper', function() {
 
       // Then ensure onPrepare ignores synchronization.
       promise.then(function(path) {
-        ensureOnPrepareMatches(path, "browser.ignoreSynchronization = true;");
+        ensureOnPrepareMatches(path, 'browser.ignoreSynchronization = true;');
+        done();
+      });
+    });
+  });
+
+  describe('chromeOptions', function() {
+
+    var ensureChromeOptionsContains = function(filePath, expected) {
+      // Read the file.
+      var templateFile = fs.readFileSync(filePath, 'utf-8'),
+          startIndex = templateFile.indexOf('chromeOptions'),
+          endIndex = templateFile.indexOf('}', startIndex),
+          onPrepare = templateFile.substring(startIndex, endIndex);
+
+      expect(onPrepare).toContain(expected);
+    };
+
+    it('should resolve extension path', function(done) {
+      // When you create a default config file.
+      var promise = configHelper.createProtractorConfig({});
+
+      // Then ensure the extension path was resolved.
+      promise.then(function(file) {
+        var extensionDir = path.resolve(__dirname, '../extension');
+        ensureChromeOptionsContains(file, "'--load-extension=" + extensionDir + "'");
         done();
       });
     });
