@@ -10,7 +10,8 @@
     "body-parser": "^1.12.2",
     "express": "^4.12.3",
     "lodash": "^2.4.1",
-    "minimist": "^1.1.0"
+    "minimist": "^1.1.0",
+    "temp": "^0.8.1"
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5",
