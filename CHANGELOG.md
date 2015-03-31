@@ -1,3 +1,8 @@
+# 1.0.0
+
+ - Major refactoring to support protractor 2.0.0. This release may contain a few
+ bugs. I will publish fixes soon.
+
 # 0.1.2
 
  - Add the ability to pass flags to chromedriver
