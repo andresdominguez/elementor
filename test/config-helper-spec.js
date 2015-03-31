@@ -10,7 +10,7 @@ describe('config-helper', function() {
         endIndex = templateFile.indexOf('}', startIndex),
         onPrepare = templateFile.substring(startIndex, endIndex);
 
-    expect(onPrepare).toMatch(expected);
+    expect(onPrepare).toContain(expected);
   };
 
   it('should go to url', function(done) {
