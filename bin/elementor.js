@@ -10,11 +10,10 @@ var args = minimist(process.argv.slice(2), {
 
 if (args.help) {
   var cmd = require('path').basename(process.argv[1]);
-  console.log(
-      require('fs')
-          .readFileSync(path.join(__dirname, '../help.txt'), 'utf-8')
-          .replace(/\$0/g, cmd)
-          .trim());
+  console.log(require('fs')
+      .readFileSync(path.join(__dirname, '../help.txt'), 'utf-8')
+      .replace(/\$0/g, cmd)
+      .trim());
   process.exit();
 }
 
