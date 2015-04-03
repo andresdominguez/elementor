@@ -28,7 +28,6 @@ var getOptions = function() {
 
   // Ignore synchronization?
   if (args.nonAngular) {
-    console.log('This is not an angular application');
     options.ignoreSynchronization = true;
   }
 
