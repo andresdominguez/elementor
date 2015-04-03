@@ -31,6 +31,11 @@ var getOptions = function() {
     options.ignoreSynchronization = true;
   }
 
+  // Chrome arguments?
+  if (args.chrome) {
+    options.chromeOptions = args.chrome;
+  }
+
   // Is there a url?
   if (args._[0]) {
     options.url = args._[0];
