@@ -1,3 +1,7 @@
+# 1.0.5
+
+ - Re-implement the `--nonAngular` flag.
+
 # 1.0.4
 
  - Use my own version of protractor (protractor-elementor)
