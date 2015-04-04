@@ -1,3 +1,7 @@
+# 1.0.7
+
+ - Fix small bug in chrome extension introduced by 1.0.6.
+
 # 1.0.6
 
  - Re-implement the `--chrome` feature.

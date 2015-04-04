@@ -24,7 +24,7 @@ describe('config-helper', function() {
       promise.then(function(file) {
         var extensionDir = path.resolve(__dirname, '../extension');
         ensureChromeOptionsContains(file,
-            "' --load-extension=" + extensionDir + "'");
+            "'--load-extension=" + extensionDir + "'");
         done();
       });
     });
