@@ -1,3 +1,7 @@
+# 1.0.6
+
+ - Re-implement the `--chrome` feature.
+
 # 1.0.5
 
  - Re-implement the `--nonAngular` flag.
