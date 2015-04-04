@@ -43,10 +43,11 @@ In another terminal run elementor with an optional url:
 $ elementor https://angularjs.org
 ```
 
-If you need to pass flags to chrome use the `--chrome` flag:
+If you need to pass flags to chrome use the `--chrome` flag. Use spaces to
+separate the flags.
 
 ```shell
-$ elementor https://angularjs.org --chrome="--remote-debugging-port=9222 --disable-web-security"
+$ elementor https://angularjs.org --chrome="--disable-web-security --some-other-flag=123"
 ```
 
 For applications not using Angular, just add the `--nonAngular` flag:
