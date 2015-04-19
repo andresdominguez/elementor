@@ -82,14 +82,13 @@ describe('Locator finder', function() {
       });
 
       // Then ensure the single quotes are escaped.
-      expect(list.length).toBe(1);
-      expect({
+      expect(list).toEqual([{
         name: 'byCss',
         locator: 'by.css(\'div[ng-if=" msg === \\\\\'abc\\\\\' "]\')',
         countExpression:
-            'element.all(by.css(\'div[ng-if=" msg === \\\\\'abc\\\\\' "]\')).' +
-            'count()'
-      }).toEqual(list[0]);
+        'element.all(by.css(\'div[ng-if=" msg === \\\\\'abc\\\\\' "]\')).' +
+        'count()'
+      }]);
     });
   });
 
