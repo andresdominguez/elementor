@@ -1,3 +1,5 @@
+'use strict';
+
 var locatorFinder = require('../lib/locatorFinder');
 
 describe('Locator finder', function() {

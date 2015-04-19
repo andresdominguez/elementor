@@ -1,3 +1,5 @@
+'use strict';
+
 var configHelper = require('../lib/config-helper');
 var fs = require('fs');
 var path = require('path');
