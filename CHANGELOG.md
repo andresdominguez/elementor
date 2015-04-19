@@ -1,3 +1,7 @@
+# 1.0.8
+
+ - Make elementor compatible with windows.
+
 # 1.0.7
 
  - Fix small bug in chrome extension introduced by 1.0.6.
