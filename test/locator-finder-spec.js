@@ -70,6 +70,27 @@ describe('Locator finder', function() {
       expect(list.length).toBe(1);
       expectByCss('#abc', list[0]);
     });
+
+    it('should escape quotes', function() {
+      // When you have an ng-if with quotes.
+      var list = locatorFinder.buildLocatorList({
+        byCss: {
+          nodeName: 'div',
+          'ng-if': " msg === 'abc' ",
+          class: 'ng-scope'
+        }
+      });
+
+      // Then ensure the single quotes are escaped.
+      expect(list.length).toBe(1);
+      expect({
+        name: 'byCss',
+        locator: 'by.css(\'div[ng-if=" msg === \\\\\'abc\\\\\' "]\')',
+        countExpression:
+            'element.all(by.css(\'div[ng-if=" msg === \\\\\'abc\\\\\' "]\')).' +
+            'count()'
+      }).toEqual(list[0]);
+    });
   });
 
   it('should find by binding', function() {

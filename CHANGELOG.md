@@ -1,3 +1,7 @@
+# 1.0.9
+
+ - Escape single quotes in css suggestions
+
 # 1.0.8
 
  - Make elementor compatible with windows.
