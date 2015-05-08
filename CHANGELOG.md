@@ -1,3 +1,7 @@
+# 1.0.10
+
+ - Show a "Finding suggestions" message when using the developer tools
+
 # 1.0.9
 
  - Escape single quotes in css suggestions

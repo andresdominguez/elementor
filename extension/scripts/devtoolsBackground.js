@@ -100,6 +100,9 @@ panels.elements.createSidebarPane('Protractor', function(sidebar) {
       return;
     }
 
+    // Show a loading message.
+    sidebar.setObject({log: 'Finding suggestions'}, 'Locators');
+
     var cmd = '(' + getSuggestions.toString() + ')()';
 
     chrome.devtools.inspectedWindow.eval(cmd,
