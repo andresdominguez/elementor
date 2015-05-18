@@ -130,4 +130,4 @@ A sublime plugin is available. Follow the installation
 
 There is also an emacs plugin available [here][https://github.com/fixermark/elementor.el]. Installation instructions are in the plugin's README.
 
-![emacs plugin](doc/elmentor-emacs.png)
+![emacs plugin](doc/elementor-emacs.png)
