@@ -121,7 +121,13 @@ installation instructions
 
 ## Using the Sublime plugin
 
-There is also a sublime plugin. Follow the installation installation
+A sublime plugin is available. Follow the installation
 [here](https://github.com/andresdominguez/elementor-sublime).
 
 ![sublime plugin](https://raw.githubusercontent.com/andresdominguez/elementor-sublime/master/screenshot.png)
+
+## Using the Emacs plugin
+
+There is also an emacs plugin available [here][https://github.com/fixermark/elementor.el]. Installation instructions are in the plugin's README.
+
+![emacs plugin](doc/elmentor-emacs.png)
