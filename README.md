@@ -128,6 +128,6 @@ A sublime plugin is available. Follow the installation
 
 ## Using the Emacs plugin
 
-There is also an emacs plugin available [here][https://github.com/fixermark/elementor.el]. Installation instructions are in the plugin's README.
+There is also an emacs plugin available [here](https://github.com/fixermark/elementor.el). Installation instructions are in the plugin's README.
 
 ![emacs plugin](doc/elementor-emacs.png)
