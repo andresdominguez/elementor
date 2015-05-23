@@ -1,3 +1,7 @@
+# 1.0.11
+
+ - Use the real 2.1.0 protractor version instead of my custom version.
+
 # 1.0.10
 
  - Show a "Finding suggestions" message when using the developer tools
