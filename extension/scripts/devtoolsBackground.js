@@ -17,13 +17,17 @@ var getSuggestions = function() {
     }
 
     // Get all the element attributes to generate byCss locators.
-    if ($0.attributes.length) {
+    var attrs = $0.attributes,
+        attribute;
+
+    if (attrs.length) {
       locators.byCss = {
         nodeName: $0.nodeName.toLowerCase()
       };
-      angular.forEach($0.attributes, function(attribute) {
+      for (var i = 0; i < attrs.length; i++) {
+        attribute = attrs[i];
         locators.byCss[attribute.name] = attribute.value;
-      });
+      }
     }
 
     // Id?
