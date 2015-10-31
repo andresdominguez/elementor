@@ -9,13 +9,12 @@ var panels = chrome.devtools.panels,
  */
 var getSuggestions = function() {
   try {
-    // Angular and a selected element are required.
-    if (!(window.angular && $0)) {
-      return {};
-    }
+    var locators = {};
 
-    var el = angular.element($0),
-        locators = {};
+    // A selected element is required.
+    if (!$0) {
+      return locators;
+    }
 
     // Get all the element attributes to generate byCss locators.
     if ($0.attributes.length) {
@@ -28,19 +27,26 @@ var getSuggestions = function() {
     }
 
     // Id?
-    if (el.attr('id')) {
-      locators.byId = el.attr('id');
+    if ($0.getAttribute('id')) {
+      locators.byId = $0.getAttribute('id');
     }
 
     // Button?
-    if ($0.tagName === 'BUTTON' || el.attr('type') === 'button') {
-      locators.byButtonText = el.text() || el.attr('value');
+    if ($0.tagName === 'BUTTON' || $0.getAttribute('type') === 'button') {
+      locators.byButtonText = $0.textContent || $0.getAttribute('value');
     }
 
     // Link?
     if ($0.tagName === 'A') {
-      locators.byLinkText = el.text();
+      locators.byLinkText = $0.textContent;
     }
+
+    // Test angular-specific locators.
+    if (!window.angular) {
+      return locators;
+    }
+
+    var el = angular.element($0);
 
     // Binding?
     if (el.hasClass('ng-binding')) {
