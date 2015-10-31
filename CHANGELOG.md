@@ -1,3 +1,8 @@
+# 1.1.0
+
+* Suggest locators in non-angular applications.
+* Use regular protractor instead of my own patched version.
+
 # 1.0.11
 
  - Use the real 2.1.0 protractor version instead of my custom version.
