@@ -1,3 +1,7 @@
+# 2.0.0
+
+* Upgrade to protractor 3.3.0
+
 # 1.1.0
 
 * Suggest locators in non-angular applications.
