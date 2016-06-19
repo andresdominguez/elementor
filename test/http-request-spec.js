@@ -29,7 +29,7 @@ describe('HTTP', function() {
     };
 
     it('should navigate to protractor website', function(done) {
-      var url = 'browser.get(\'http://angular.github.io/protractor/#/api\')';
+      var url = 'browser.get(\'http://www.protractortest.org/#/api\')';
 
       // Given that you navigate to the protractor website.
       callPopup(url).then(function() {
@@ -39,7 +39,7 @@ describe('HTTP', function() {
         // Then ensure the URL has changed.
         expect(response).toEqual({
           results: {
-            'browser.getCurrentUrl()': 'http://angular.github.io/protractor/#/api'
+            'browser.getCurrentUrl()': 'http://www.protractortest.org/#/api'
           }
         });
         done();
