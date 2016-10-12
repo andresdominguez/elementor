@@ -1,3 +1,8 @@
+# 2.1.0
+
+* Upgrade to protractor 4.0.9
+* Upgraded body-parser, express, lodash, q, temp
+
 # 2.0.0
 
 * Upgrade to protractor 3.3.0
